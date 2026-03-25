@@ -1,39 +1,45 @@
-#Proje Fikri: AtıkSav (FoodBridge AI)
-Slogan: İsrafı Sosyal Etkiye, Rotayı İyiliğe Dönüştürün.
+Kurulum ve Çalıştırma Adımları
 
-#Problem: Ne Çözüyorum?
+1. Depoyu Klonlayın
+git clone https://github.com/atiksav/atiksav-foodbridge-ai.git
+cd atiksav-foodbridge-ai
 
-Dünya genelinde gıda israfı çevresel bir yıkıma neden olurken, yerel düzeyde restoran ve marketlerin gün sonu fazlasını ihtiyaç sahiplerine ulaştırmasının önünde üç ana engel bulunmaktadır:
+2. Backend (Python & AI) Kurulumu
+# Sanal ortam oluşturma
+python -m venv venv
 
-Lojistik Maliyet ve Karmaşa: Küçük miktarlardaki gıdaların farklı noktalardan toplanıp doğru yerlere (aşevleri, barınaklar vb.) ulaştırılması için gereken operasyonel planlama eksikliği.
-Motivasyon ve İzlenebilirlik: Bağış yapan işletmelerin yarattıkları sosyal etkiyi 
-somutlaştıramaması ve bu sürecin bir yük olarak görülmesi.
-Kapsam Daralması: Sadece insan tüketimine uygun gıdalara odaklanılması, hayvan barınakları için değerli olabilecek diğer atıkların göz ardı edilmesi.
+# Sanal ortamı aktif etme (Windows)
+venv\Scripts\activate
 
-#Kullanıcı: Bu Uygulamayı Kim Kullanacak?
+# Sanal ortamı aktif etme (macOS/Linux)
+source venv/bin/activate
 
-Platformumuz birbirini besleyen üç ana kullanıcı grubundan oluşur:
+# Gerekli kütüphanelerin yüklenmesi
+pip install -r requirements.txt
 
-Arz Tarafı (İşletmeler): Restoranlar, kafeler ve zincir marketler (Gıda fazlasını sisteme girer).
-Lojistik Tarafı (Öğrenciler): * Gönüllüler: Üniversite ÜSD dersleri kapsamında sosyal sorumluluk puanı/kredisi almak isteyen öğrenciler.
-Öğrenci Kuryeler: Kendi aracıyla günübirlik harçlık kazanmak isteyen genç girişimciler.
-Talep Tarafı (Kurumlar): Aşevleri, sivil toplum kuruluşları ve hayvan barınakları.
+3. Ortam Değişkenlerini Yapılandırın
+​Proje kök dizininde .env adlı bir dosya oluşturun ve gerekli anahtarları tanımlayın:
 
-#AI'ın Rolü: Yapay Zeka Bu Çözümde Ne Yapıyor?
+DB_CONNECTION=your_database_url
+AI_API_KEY=your_gemini_or_openai_key
+GOOGLE_MAPS_API=your_google_maps_key
 
-Yapay zeka projemizin "operasyonel beyni" konumundadır:
+4. Frontend (Mobil/Web) Kurulumu
+cd client
+npm install
 
-Rota Optimizasyonu: Birden fazla noktadan (restoranlar) toplanan gıdaların, bozulma süreleri ve lokasyon önceliklerine göre en verimli rotayla dağıtılmasını sağlar.
-Arz-Talep Tahminleme: İşletmelerin geçmiş verilerini analiz ederek hangi günlerde ne kadar fazla gıda çıkabileceğini öngörür ve lojistik ekibi önceden uyarır.
-Otomatik Etki Analizi: Kurtarılan gıda verilerini analiz ederek her ay sonunda işletmelere özel sosyal etki raporları ve sosyal medya içerikleri (kartlar, grafikler) üretir.
+5. Uygulamayı Başlatın
+​Aşağıdaki komutları ayrı terminallerde çalıştırarak sistemi ayağa kaldırabilirsiniz:
 
-#Rakip Durum: Benzer Çözümler ve Farkımız
-Mevcut gıda israfı uygulamaları (Too Good To Go, Karma vb.) genellikle gıdayı indirimli satmaya odaklanan bir "pazaryeri" modelidir.
-Farkımız: Biz bir satış platformu değil, akıllı lojistik ve sosyal etki platformuyuz. * Rakipler "gel-al" yöntemini kullanırken, biz öğrencileri sürece dahil ederek lojistik sorununu çözüyoruz.
-Ayrıca hayvan barınaklarını sürece dahil ederek israfı gerçek anlamda "sıfıra" indiriyoruz.
+Backend Sunucusu:
+python main.py
 
-#Başarı Kriteri: Bu Proje Başarılı Olursa Ne Değişecek?
+Frontend Uygulaması:
+npm start
 
-Sıfır Atık Hedefi: Binlerce ton gıdanın çöpe gitmesi engellenecek, gıda atıklarından kaynaklanan karbon emisyonu azalacak.
-Sosyal Dayanışma: Yerel işletmeler ve öğrenciler arasında güçlü bir yardımlaşma ağı kurulacak.
-Veriye Dayalı İyilik: "Sosyal Etki Puanı" ile iyilik yapmak ölçülebilir ve ödüllendirilebilir bir statü simgesi haline gelecek; bu da daha fazla işletmeyi teşvik edecek.
+AI Rota Optimizasyon Testi:
+python scripts/optimize_route.py --test
+
+
+
+
